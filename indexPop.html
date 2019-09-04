@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>My first Vue app</title>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"
+    />
+    <script src="https://unpkg.com/vue"></script>
+    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  </head>
+  <!-- main body -->
+  <body>
+    <div id="app" class="d-flex flex-column text-md-center">
+      <div class="p-2">
+        <b-button id="popover-button-sync" variant="primary"
+          >I have a popover</b-button
+        >
+      </div>
+
+      <div class="p-2">
+        <b-button class="px-1" @click="show = !show">Toggle Popover</b-button>
+
+        <b-popover
+          :show.sync="show"
+          target="popover-button-sync"
+          title="Popover"
+        >
+          Hello <strong>World!</strong>
+        </b-popover>
+      </div>
+    </div>
+    <!-- Script below -->
+    <script type="text/javascript">
+      Vue.component("todo-item", {
+        props: ["todo"],
+        template: "<li>{{ todo.text }}</li>"
+      });
+    </script>
+
+    <script type="text/javascript">
+      var app = new Vue({
+        el: "#app",
+        data: {
+          show: false
+        },
+        methods: {
+          toggleMessageVisibility: function() {
+            this.seen = !this.seen;
+            var msg = "";
+            this.message = this.message
+              .split(" ")
+              .reverse()
+              .join(" ");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
